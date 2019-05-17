@@ -7,7 +7,9 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.AffineTransform;
 
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.Timer;
 
@@ -21,9 +23,10 @@ public class Avion extends JComponent implements Runnable, ActionListener{
 	TorreControl torre;
 	int turno;
 	private boolean usandoPista, aterrizo, sentido, puedeAterrizar, doWait;
-	private Image avion= Rutinas.AjustarImagen("imagenes/Avion.png", 51, 36).getImage(); 
-	private Image avionInv= Rutinas.AjustarImagen("imagenes/AvionRev.png", 51, 36).getImage();
-	private Image avionG= Rutinas.AjustarImagen("imagenes/AvionRev.png", 95, 60).getImage();
+//	private Image avion= Rutinas.AjustarImagen("imagenes/Avion.png", 51, 36).getImage(); 
+//	private Image avionInv= Rutinas.AjustarImagen("imagenes/AvionRev.png", 51, 36).getImage();
+//	private Image avionG= Rutinas.AjustarImagen("imagenes/AvionRev.png", 95, 60).getImage();
+	private static final Image avion = new ImageIcon("imagenes/Avion.png").getImage();
 	private Semaforo s;
 	int AvionX,AvionY;
 	int intentos;
@@ -57,32 +60,6 @@ public class Avion extends JComponent implements Runnable, ActionListener{
 	public void run() {
 		t.start();
 		
-//		while(!aterrizo) {
-//			intentos++;
-//			s.Espera();
-//			if(turno == torre.turno) {
-//				System.out.println("llegaaa");
-//				aterrizar();
-//				while(true) {					
-//					System.out.println(aterrizo);   //Comentado no funciona xd
-//					if(aterrizo == true) {
-//						//System.out.println("llega");
-//						try {
-//							Thread.sleep(Rutinas.nextInt(2000, 3000));
-//						}catch(Exception e) {e.printStackTrace();}
-//						
-//						torre.turno++;
-//						repaint();
-//						t.stop();
-//						break;
-//					}
-//				}
-//				System.out.println("Salio");
-//				s.Libera();
-//			}
-//			s.Libera();
-//		}
-		
 		while(!doWait) {
 			System.out.print("");
 		}
@@ -102,14 +79,19 @@ public class Avion extends JComponent implements Runnable, ActionListener{
 	public void dibujarAvion(Graphics2D g) {
 		setLocation(AvionX, AvionY);
 		g.setComposite(AlphaComposite.SrcOver.derive(alpha));
-		if(sentido)
-			g.drawImage(avion, 0, 10, 50,25,null);
-		else {
-			if(!usandoPista)
-				g.drawImage(avionInv, 0, 10, 50, 25, null);
-			else 
-				g.drawImage(avionG, 0, 10, 90,60,null);
-		}
+		AffineTransform identity = new AffineTransform();
+		AffineTransform trans = new AffineTransform();
+		trans.setTransform(identity);
+		trans.rotate( Math.toRadians(sentido ? 0 : 180) );
+		g.drawImage(avion, trans, this);
+//		if(sentido)
+//			g.drawImage(avion, 0, 10, 50,25,null);
+//		else {
+//			if(!usandoPista)
+//				g.drawImage(avionInv, 0, 10, 50, 25, null);
+//			else 
+//				g.drawImage(avionG, 0, 10, 90,60,null);
+//		}
 		
 		g.drawString("#" +(turno+1), 10, 10);
 	}
