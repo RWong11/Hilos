@@ -43,12 +43,6 @@ public class Hectarea extends JLabel {
 	}
 	
 	
-//	public void paint(Graphics g) {
-//		super.paint(g);
-//		Image img = Rutinas.AjustarImagen(nomImg(), 58, 58).getImage();
-//		g.drawImage(img, 0, 0, null);
-//	}
-	
 	public Tipo getTipo() {
 		return tipo;
 	}
