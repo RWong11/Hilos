@@ -1,6 +1,5 @@
 package Hectareas;
 
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Random;
@@ -13,7 +12,7 @@ import Utiles.SemaforoBandera;
 
 public class AplicacionHectareas extends JFrame {
 	
-
+	private static final long serialVersionUID = 1L;
 	Hectarea[] hectareas;
 	Hermano[] hermanos;
 	ArrayList<Hectarea> entregas;

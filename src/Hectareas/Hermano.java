@@ -2,9 +2,11 @@ package Hectareas;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+import javax.swing.ImageIcon;
+
+import Utiles.Rutinas;
 import Utiles.SemaforoBandera;
 
 public class Hermano extends Thread {
@@ -15,6 +17,9 @@ public class Hermano extends Thread {
 	private static ArrayList<Hectarea> entregas;
 	int totH;
 	public static final Color[] coloresHermano = new Color[] { Color.BLACK, Color.BLUE, Color.DARK_GRAY };
+	public static final ImageIcon imgs[] = {Rutinas.AjustarImagen("1.png", 30, 30),
+			Rutinas.AjustarImagen("2.png", 30, 30),Rutinas.AjustarImagen("3.png", 30, 30)};
+	
 	
 	public Hermano(int nHermano) {
 		this.nHermano = nHermano;
@@ -39,8 +44,8 @@ public class Hermano extends Thread {
 			sb[hectarea].getSemaforo().Libera();
 			hectareas[hectarea].setHermano(nHermano);
 			hectareas[hectarea].setForeground(coloresHermano[nHermano]);
-			int inicio = nHermano+1;
-			hectareas[hectarea].setText("<html><img src=\"file:imagenes\\" +inicio +".png\"" +" width=\"40\" height=\"40\">");
+			hectareas[hectarea].setImagen(imgs[nHermano]);
+//			hectareas[hectarea].setText("<html><img src=\"file:imagenes\\" +inicio +".png\"" +" width=\"40\" height=\"40\">");
 			totH++;
 			entregas.add(hectareas[hectarea]);
 		}

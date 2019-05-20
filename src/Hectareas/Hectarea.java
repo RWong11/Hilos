@@ -1,13 +1,16 @@
 package Hectareas;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-public class Hectarea extends JLabel {
+public class Hectarea extends JPanel {
+
+	
+	private static final long serialVersionUID = 1L;
+
 	enum Tipo {
 		MALA(new Color(226,161,0)), 
 		BUENA(new Color(219,226,0)), 
@@ -28,20 +31,13 @@ public class Hectarea extends JLabel {
 	private int hermano;
 	
 	public Hectarea(Tipo tipo) {
-		super("", JLabel.CENTER);
 		this.tipo = tipo;
-//		ponImagen();
 	}
 	
-	public String nomImg() {
-		if(tipo == Tipo.MALA)
-			return "imagenes/Mala.png";
-		else if(tipo == Tipo.BUENA)
-			return"imagenes/Buena.png";
-		else
-			return "imagenes/Excelente.png";
+	public void setImagen(ImageIcon img) {
+		JLabel lbl = new JLabel(img);
+		add(lbl);
 	}
-	
 	
 	public Tipo getTipo() {
 		return tipo;
