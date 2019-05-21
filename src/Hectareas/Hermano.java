@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 
 import Utiles.Rutinas;
@@ -12,13 +13,15 @@ import Utiles.SemaforoBandera;
 public class Hermano extends Thread {
 
 	int nHermano;
+	int totH;
 	private static Hectarea[] hectareas;
 	private static SemaforoBandera[] sb;
 	private static ArrayList<Hectarea> entregas;
-	int totH;
-	public static final Color[] coloresHermano = new Color[] { Color.BLACK, Color.BLUE, Color.DARK_GRAY };
-	public static final ImageIcon imgs[] = {Rutinas.AjustarImagen("1.png", 30, 30),
-			Rutinas.AjustarImagen("2.png", 30, 30),Rutinas.AjustarImagen("3.png", 30, 30)};
+	private static int TAM = 50;
+	public static final Color[] coloresHermano = new Color[] { Color.BLUE, Color.RED, new Color(8,128,11) };
+	public static final ImageIcon imgs[] = {Rutinas.AjustarImagen("imagenes/1.png", TAM, TAM),
+			Rutinas.AjustarImagen("imagenes/2.png", TAM, TAM)
+			,Rutinas.AjustarImagen("imagenes/3.png", TAM, TAM)};
 	
 	
 	public Hermano(int nHermano) {
@@ -43,11 +46,14 @@ public class Hermano extends Thread {
 			sb[hectarea].setBandera(true);
 			sb[hectarea].getSemaforo().Libera();
 			hectareas[hectarea].setHermano(nHermano);
-			hectareas[hectarea].setForeground(coloresHermano[nHermano]);
+//			hectareas[hectarea].setForeground(coloresHermano[nHermano]);
+			hectareas[hectarea].setBorder(BorderFactory.createLineBorder(coloresHermano[nHermano], 2));
 			hectareas[hectarea].setImagen(imgs[nHermano]);
-//			hectareas[hectarea].setText("<html><img src=\"file:imagenes\\" +inicio +".png\"" +" width=\"40\" height=\"40\">");
 			totH++;
 			entregas.add(hectareas[hectarea]);
+			try {
+				Thread.sleep(500);
+			}catch(Exception e) {}
 		}
 	}
 	

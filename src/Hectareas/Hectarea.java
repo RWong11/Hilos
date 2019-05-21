@@ -32,11 +32,13 @@ public class Hectarea extends JPanel {
 	
 	public Hectarea(Tipo tipo) {
 		this.tipo = tipo;
+		this.setBackground(tipo.getColor());
 	}
 	
 	public void setImagen(ImageIcon img) {
 		JLabel lbl = new JLabel(img);
 		add(lbl);
+		updateUI();
 	}
 	
 	public Tipo getTipo() {

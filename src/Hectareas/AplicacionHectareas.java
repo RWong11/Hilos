@@ -22,7 +22,7 @@ public class AplicacionHectareas extends JFrame {
 	}
 	
 	public AplicacionHectareas() {
-		setSize(800, 800);
+		setSize(700, 700);
 		setLayout(new GridLayout(10, 10));
 		
 		hectareas = new Hectarea[100];
@@ -58,15 +58,6 @@ public class AplicacionHectareas extends JFrame {
 		for(Hermano herm: hermanos )
 			System.out.println("Total de hectareas hermano " + (herm.nHermano+1) + ": " + herm.totH);
 		
-//		int inicio;
-//		for(Hectarea h: entregas) {
-//			h.setForeground(coloresHermano[h.getHermano()]);
-//			inicio = h.getHermano()+1;
-//			h.setText("<html><img src=\"file:imagenes\\hectarea\\" +inicio +".png\"" +" width=\"60\" height=\"60\">");
-//			try {
-//				Thread.sleep(50);
-//			} catch (Exception e) { }
-//		}
 	}
 	
 	public boolean hayaVivos() {
