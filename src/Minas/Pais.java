@@ -7,11 +7,9 @@ import javax.swing.JTable;
 import Utiles.Semaforo;
 
 public class Pais extends Thread {
-	private String nombre;
 	private int continente;
 	private int indice;
 	private int[] toneladas;
-	private int peticiones;
 	
 	private static Semaforo semaforo;
 	private static JTable[] tablas;
@@ -21,7 +19,6 @@ public class Pais extends Thread {
 	private static int[] matVendidoTipo;
 	
 	public Pais(String nombre, int continente, int indice) {
-		this.nombre = nombre;
 		this.continente = continente;
 		this.indice = indice;
 		toneladas = new int[3];
@@ -65,10 +62,9 @@ public class Pais extends Thread {
 			semaforo.Libera();
 			tablas[2].setValueAt(matVendidoContinente[continente], 0, 1+continente);
 			tablas[2].setValueAt(matVendidoTipo[tipo], 0, 3+tipo);
-			peticiones++;
 			tablas[continente].setValueAt("<html> <b>" +toneladas[tipo] +"<font color='green'> (+" +cantidad +")", indice, tipo+1);
 			toneladas[tipo] += cantidad;
-			dormir(50);
+			dormir(300);
 			tablas[continente].setValueAt(toneladas[tipo], indice, tipo+1);
 		}	
 	}

@@ -3,9 +3,6 @@ package Nisson;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -13,7 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
 public class Estancia extends JPanel {
-	//public static final URL ROBOT_ICON = Estancia.class.getResource("robot.gif");
+	
+	private static final long serialVersionUID = 1L;
 	public static final String ROBOT_ICON = "imagenes/robot.png";
 	public static final String TRANSMISION_ICON = "imagenes/transmision.png";
 	
@@ -29,7 +27,6 @@ public class Estancia extends JPanel {
 		progreso.setString("");
 		setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 		robot = new JLabel("", JLabel.RIGHT);
-		//robot.setIcon(new ImageIcon(ROBOT_ICON));
 		robot.setIcon(new ImageIcon((new ImageIcon(ROBOT_ICON).getImage()).getScaledInstance(32, 32, java.awt.Image.SCALE_SMOOTH)));
 		add(robot, BorderLayout.EAST);
 		robot.setVisible(false);
@@ -39,13 +36,13 @@ public class Estancia extends JPanel {
 	public void setCarro(JLabel carro) {
 		add(carro);
 		progreso.setBackground(Color.ORANGE);
-		progreso.setString("Esperando Robot...");
+		progreso.setString("Esperando Robot... ");
 		updateUI();
 	}
 	
-	public void showRobot(boolean activado) {
-		robot.setVisible(activado);
-		progreso.setString(activado ? "Fabricando" : "Listo");
+	public void showRobot(boolean activo) {
+		robot.setVisible(activo);
+		progreso.setString(activo ? "Fabricando" : "Listo");
 		progreso.setBackground(Color.GREEN);
 		updateUI();
 	}

@@ -39,13 +39,12 @@ public class AplicacionHectareas extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
-		entregas = new ArrayList<Hectarea>();
 		SemaforoBandera[] sb = new SemaforoBandera[hectareas.length];
 		for(int i = 0; i < sb.length; i++) 
 			sb[i] = new SemaforoBandera();
 		
 		hermanos = new Hermano[3];
-		Hermano.setHectareas(hectareas, sb, entregas);
+		Hermano.setHectareas(hectareas, sb);
 
 		for(int i = 0; i < hermanos.length; i++) 
 			hermanos[i] = new Hermano(i);

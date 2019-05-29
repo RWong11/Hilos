@@ -12,6 +12,9 @@ import javax.swing.JPanel;
 import Utiles.Semaforo;
 
 public class AplicacionNisson extends JFrame {
+
+	
+	private static final long serialVersionUID = 1L;
 	public static final String[] ESTACIONES = { "Chasis y cableado", "Motor-transmisión", "Carrocería", "Interiores", "Llantas", "Pruebas" };
 	public static final int[] DURACION = new int[] { 20, 6, 10, 5, 5, 10 }; 
 	public static final int[] ROBOTS = new int[] { 5, 4, 3, 3, 0, 0 }; 

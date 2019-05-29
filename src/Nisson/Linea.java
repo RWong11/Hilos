@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import Utiles.Semaforo;
 
 public class Linea extends Thread {
+	
 	private JLabel carro;
 	private static int nCarros;
 	private Estancia[] estancias;

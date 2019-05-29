@@ -3,22 +3,18 @@ package Minas;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.util.Random;
-
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.TitledBorder;
-
 import Utiles.Semaforo;
 
 public class AplicacionMinas extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private static final String[] CONTINENTES = { "Europa", "Asia" };
-	private static final String[] TIPOS = { "Regular", "Buena", "Excelente" };
-	
 	private static int totalToneladas;
 	private static int[] material;
 	private static int[] materialMax;
@@ -34,9 +30,9 @@ public class AplicacionMinas extends JFrame {
 		matVendidoContinente = new int[2];
 		matVendidoTipo = new int[3];
 
-		material[0] = (int)(totalToneladas*0.30);
-		material[1] = material[0]*2;
-		material[2] = totalToneladas - (material[0]+material[1]);
+		material[0] = (int)(totalToneladas*0.30);	//Regular
+		material[1] = material[0]*2;	//Buena
+		material[2] = totalToneladas - (material[0]+material[1]);	//Excelente
 		
 		materialMax[0] = materialMax[1] = totalToneladas/2;
 		if((totalToneladas%2) != 0) 
@@ -74,7 +70,6 @@ public class AplicacionMinas extends JFrame {
 			tablas[i] = new JTable(datos, colNombres);
 			panels[i] = new JPanel();
 			panels[i].setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), CONTINENTES[i], TitledBorder.CENTER, TitledBorder.TOP));
-			//panels[i].add(new JScrollPane(tablas[i]));
 			panels[i].add(tablas[i].getTableHeader());
 			panels[i].add(tablas[i]);
 			panelPeticiones.add(panels[i]);
@@ -101,7 +96,7 @@ public class AplicacionMinas extends JFrame {
 		for(int i = 0; i < paises.length; i++) 
 			paises[i].start();
 
-		//setResizable(false);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
@@ -115,7 +110,6 @@ public class AplicacionMinas extends JFrame {
 	}
 	
 	public boolean hayaVivos() {
-		//System.out.print("");
 		for(int i = 0; i < paises.length; i++) {
 			if(paises[i].isAlive())
 				return true;

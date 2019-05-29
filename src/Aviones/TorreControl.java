@@ -1,19 +1,15 @@
 package Aviones;
 
 import java.awt.BorderLayout;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.util.Vector;
-
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import Utiles.Rutinas;
 import Utiles.Semaforo;
 
 public class TorreControl extends JFrame{
 
+	private static final long serialVersionUID = 1L;
 	Avion aviones[];
 	Semaforo S;
 	int turno = 0;
@@ -29,14 +25,9 @@ public class TorreControl extends JFrame{
 		
 		System.out.println(turno);
 		
-		while(hayaVivos());
-		
-		
+		while(hayaVivos());	
 	}
-	
-	public void printResults() {
-	}
-	
+		
 	public void hazInterfaz() {
 		setSize(700,400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

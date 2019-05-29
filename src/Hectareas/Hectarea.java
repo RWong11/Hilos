@@ -13,8 +13,8 @@ public class Hectarea extends JPanel {
 
 	enum Tipo {
 		MALA(new Color(226,161,0)), 
-		BUENA(new Color(219,226,0)), 
-		EXCELENTE(new Color(0,226,110));
+		BUENA(new Color(219,246,0)), 
+		EXCELENTE(new Color(0,160,60));
 		
 		private final Color color;
 		
@@ -31,7 +31,7 @@ public class Hectarea extends JPanel {
 	private int hermano;
 	
 	public Hectarea(Tipo tipo) {
-		this.tipo = tipo;
+//		this.tipo = tipo;
 		this.setBackground(tipo.getColor());
 	}
 	
